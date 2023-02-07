@@ -63,7 +63,7 @@ class ChatConsumer(WebsocketConsumer):
 
         if self.user.is_authenticated:
             # delete the user inbox for private messages
-            async_to_sync(self.channel_layer.group_add)(
+            async_to_sync(self.channel_layer.group_discard)(
                 self.user_inbox,
                 self.channel_name,
             )
